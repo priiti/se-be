@@ -1,0 +1,39 @@
+version: "2"
+
+services:
+  SEMongo:
+    image: mongo:3.6
+    container_name: "SEmongo"
+    networks:
+      - main
+    environment:
+      - MONGO_DATA_DIR=SE-data:/data/db
+    volumes:
+      - SE-data:/data/db
+    ports:
+        - 27017:27017
+    command: mongod --logpath=/var/log/mongodb/mongodb.log --logappend
+
+  SEnode:
+    image: stckex-be
+    container_name: 'SEnode'
+    networks:
+      - main
+    build:
+      context: .
+    ports:
+      - ${PORT}:${PORT}
+    volumes:
+      - .:/var/app
+      - /var/app/node_modules
+    depends_on:
+      - SEMongo
+    command:
+      npm start
+
+volumes:
+  SE-data:
+
+networks:
+  main:
+    driver: bridge

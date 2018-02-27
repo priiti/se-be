@@ -1,0 +1,20 @@
+[
+  {
+    "country": ["US", "IN"],
+    "budget": 2,
+    "bid": 0.3,
+    "category": ["Finance", "IT"]
+  },
+  {
+    "country": ["US", "RU"],
+    "budget": 3,
+    "bid": 0.1,
+    "category": ["Automobile", "IT"]
+  },
+  {
+    "country": ["US", "FR"],
+    "budget": 3,
+    "bid": 0.5,
+    "category": ["Automobile", "IT"]
+  }
+]
